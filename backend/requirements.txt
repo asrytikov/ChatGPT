@@ -1,3 +1,5 @@
 openai
 httpx
 fastapi
+uvicorn[standard]
+gunicorn

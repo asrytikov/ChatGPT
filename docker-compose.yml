@@ -4,28 +4,24 @@ services:
       context: ./backend
     container_name: backend 
     ports:
-      - "8000:8000"
-    expose:
-      - "8000"
+      - "8001:8000"
     networks:
-      - my-network
-
+      - appnet
 
   frontend:
-    build:
-      context: ./frontend
     container_name: frontend
+    restart: always
+    image: nginx:latest
+    volumes:
+      - ./frontend/nginx.conf:/etc/nginx/conf.d/default.conf
+      - ./frontend:/etc/nginx/html/
     ports:
-      - "80:80"
-
+      - "81:80"
     networks:
-      - my-network
-    
+      - appnet
     depends_on:
       - backend
 
-
-
 networks:
-  my-network:
+  appnet:
     driver: bridge

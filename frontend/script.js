@@ -2,7 +2,7 @@
 const chat = document.getElementById('chat');
 const input = document.getElementById('message');
 const button = document.getElementById('send');
-const websocket = new WebSocket('ws://127.0.0.1:8000/ws');
+const websocket = new WebSocket('ws://192.168.88.33:81/ws');
 
 
 button.addEventListener('click', () => {
